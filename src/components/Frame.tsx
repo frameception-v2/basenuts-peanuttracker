@@ -22,17 +22,51 @@ import { createStore } from "mipd";
 import { Label } from "~/components/ui/label";
 import { PROJECT_TITLE } from "~/lib/constants";
 
-function ExampleCard() {
+function PeanutStats({ fid }: { fid?: string }) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Welcome to the Frame Template</CardTitle>
-        <CardDescription>
-          This is an example card that you can customize or remove
-        </CardDescription>
+    <Card className="border-purple-300">
+      <CardHeader className="pb-3">
+        <CardTitle className="text-purple-600">🥜 Peanut Stats</CardTitle>
       </CardHeader>
-      <CardContent>
-        <Label>Place content in a Card here.</Label>
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <Label className="text-purple-500">Total Received</Label>
+            <div className="text-2xl font-bold">1,234</div>
+          </div>
+          <div className="space-y-1">
+            <Label className="text-purple-500">Total Sent</Label>
+            <div className="text-2xl font-bold">567</div>
+          </div>
+        </div>
+        
+        <div className="space-y-2">
+          <Label className="text-purple-500">Daily Allowance</Label>
+          <div className="h-2 bg-purple-100 rounded-full">
+            <div 
+              className="h-full bg-purple-600 rounded-full transition-all duration-500" 
+              style={{ width: `${(15/30)*100}%` }}
+            />
+          </div>
+          <div className="flex justify-between text-sm text-purple-700">
+            <span>15/30 remaining</span>
+            <span>Resets in 4h12m</span>
+          </div>
+        </div>
+
+        <div className="flex gap-2">
+          <PurpleButton className="flex-1">My Stats</PurpleButton>
+          <PurpleButton className="flex-1">Leaderboard</PurpleButton>
+        </div>
+        
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search FID..."
+            className="w-full p-2 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          />
+          <PurpleButton className="absolute right-1 top-1">Search</PurpleButton>
+        </div>
       </CardContent>
     </Card>
   );
@@ -137,10 +171,10 @@ export default function Frame() {
       }}
     >
       <div className="w-[300px] mx-auto py-2 px-2">
-        <h1 className="text-2xl font-bold text-center mb-4 text-gray-700 dark:text-gray-300">
+        <h1 className="text-2xl font-bold text-center mb-4 text-purple-600">
           {PROJECT_TITLE}
         </h1>
-        <ExampleCard />
+        <PeanutStats />
       </div>
     </div>
   );
